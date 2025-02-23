@@ -27,6 +27,8 @@ import Novel from "./Novel";
 		setImage("");
 	};
 
+	console.log("error" , error)
+
 	if (loading)
 		return (
 			<p className="text-white flex items-center justify-center">
@@ -61,7 +63,7 @@ import Novel from "./Novel";
 					Add Novel
 				</button>
 			</form>
-			<div className="grid grid-cols-4 gap-2">
+			<div className="grid grid-cols-4 gap-48">
 				{novels.map((novel) => (
 					<Novel key={novel.id} novel={novel} />
 				))}

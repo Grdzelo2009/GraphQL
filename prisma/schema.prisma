@@ -9,12 +9,12 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model Novel {
-  id        String   @id @default(uuid())
+ id       String    @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   image     String?
   createdAt DateTime @default(now())
@@ -23,8 +23,8 @@ model Novel {
 }
 
 model Author {
-  id      String   @id @default(uuid())
+ id       String    @id @default(auto()) @map("_id") @db.ObjectId
   name    String
-  novelId String
+  novelId String @db.ObjectId
   novel   Novel    @relation(fields: [novelId], references: [id]) 
 }

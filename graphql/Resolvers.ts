@@ -6,9 +6,10 @@ export const resolvers = {
         return await context.prisma.novel.findMany();
       },
       novel: async (parent: any, args: any, context: Context) => {
+        const { id } = args;
         return await context.prisma.novel.findUnique({
           where: {
-            id: args.id,
+            id,
           },
         });
       },
